@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const matrixDigitsToPhoneNumber = matrixDigits => '(123) 456-7890';
+const range = (lo, hi) => Array.from({length: hi - lo}, (_, i) => lo + i);
 
 const toggleCheckbox = ({ x, y, digitIndex, checked }) => ({ checkboxMatrixDigits }) => {
   const matrix = checkboxMatrixDigits[digitIndex];
@@ -23,40 +24,40 @@ const toggleCheckbox = ({ x, y, digitIndex, checked }) => ({ checkboxMatrixDigit
   };
 };
 
-const CheckboxPhoneNumber = ({ checkboxMatrixDigits, toggleCheckbox }) => (
-  <div>
+const CheckboxPhoneNumber = ({ checkboxMatrixDigits, toggleCheckbox }) => {
+  return <div>
     <h2>Our form is very sophisticated.</h2>
     <h3>Please draw your phone number, thanks.</h3>
     <div>
-      {checkboxMatrixDigits.map((checkboxMatrix, digitIndex) => (
-        <div key={digitIndex}>
-          {checkboxMatrix.map((row, y) => (
-            <div key={y} style={{ flexDirection: 'row' }}>
+      {checkboxMatrixDigits.map((matrix, digitIndex) => {
+        return <div key={digitIndex} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+          {matrix.map((row, y) => (
+            <div key={y} style={{ display: 'flex', flex: 1 }}>
               {row.map((isChecked, x) => (
                 <div key={x}>
                   <input
                     type="checkbox"
-                    value={isChecked}
-                    onChange={checked => toggleCheckbox({x, y, digitIndex, checked})}
                   />
                 </div>
               ))}
             </div>
           ))}
         </div>
-      ))}
+      })}
     </div>
     <div>
       <div>Your phone number is</div>
       <h1>{matrixDigitsToPhoneNumber(checkboxMatrixDigits)}</h1>
     </div>
   </div>
-);
+};
 
 class CheckboxPhoneNumberContainer extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      checkboxMatrixDigits: range(0, 10).map(() => range(0, 7).map(y => range(0, 5).map(x => false)))
+    };
   }
 
   render() {

@@ -12,7 +12,7 @@ const PiPhoneNumber = ({ start, forward, backward }) => (
     <span onClick={forward}>forward</span>
     <div>
       <span>3.</span>
-      <span>
+      <span style={{ display: 'flex', flexDirection: 'row' }}>
         {piDecimals.map((digit, i) => (
           <span key={i}>
             {start <= i && i < start + 10 ?
@@ -33,6 +33,8 @@ class PiPhoneNumberContainer extends Component {
   }
 
   render() {
+    const { start } = this.state;
+
     return (
       <PiPhoneNumber
         start={start}

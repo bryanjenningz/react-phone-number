@@ -42,3 +42,5 @@ const FileUploadPhoneNumber = ({submit}) => {
 const FileUploadPhoneNumberContainer = () => (
   <FileUploadPhoneNumber submit={(...args) => console.log(submit(...args))} />
 );
+
+export { FileUploadPhoneNumber, FileUploadPhoneNumberContainer };

@@ -4,7 +4,7 @@ const randomPhoneNumber = () => String(Math.random()).slice(2, 12);
 const yes = ({ phoneNumber }) => console.log('phone number:', phoneNumber);
 const no = () => ({ phoneNumber: randomPhoneNumber() });
 
-const RandomGuessPhoneNumber = ({ phoneNumber, yes, no }) => (
+const RandomPhoneNumber = ({ phoneNumber, yes, no }) => (
   <div>
     <div>Is this your phone number? <b>{phoneNumber}</b></div>
     <div>
@@ -14,7 +14,7 @@ const RandomGuessPhoneNumber = ({ phoneNumber, yes, no }) => (
   </div>
 );
 
-class RandomGuessPhoneNumberContainer extends Component {
+class RandomPhoneNumberContainer extends Component {
   constructor() {
     super();
     this.state = { phoneNumber: randomPhoneNumber() }
@@ -22,9 +22,9 @@ class RandomGuessPhoneNumberContainer extends Component {
 
   render() {
     const { phoneNumber } = this.state;
-    
+
     return (
-      <RandomGuessPhoneNumber
+      <RandomPhoneNumber
         phoneNumber={phoneNumber}
         yes={() => this.setState(yes)}
         no={() => this.setState(no)}
@@ -33,4 +33,4 @@ class RandomGuessPhoneNumberContainer extends Component {
   }
 }
 
-export { RandomGuessPhoneNumber, RandomGuessPhoneNumberContainer };
+export { RandomPhoneNumber, RandomPhoneNumberContainer };
