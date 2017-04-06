@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 
-const formatPhoneNumber = phoneNumber => (
-  `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
-);
+const formatPhoneNumber = phoneNumber => {
+  phoneNumber = String(phoneNumber);
+  return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
+};
 const increment = ({ phoneNumber }) => ({ phoneNumber: phoneNumber + 1 });
 const submit = phoneNumber => console.log('phone number:', phoneNumber);
 
 class IncrementPhoneNumber extends Component {
   constructor() {
     super();
-    this.state = { phoneNumber: 0 }
+    this.state = { phoneNumber: 10 ** 9 }
   }
 
   render() {

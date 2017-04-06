@@ -7,6 +7,8 @@ class SliderPhoneNumber extends Component {
   }
 
   render() {
+    const { phoneNumber } = this.state;
+    
     return (
       <div>
         <div>Please enter your phone number:</div>

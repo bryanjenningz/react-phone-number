@@ -61,3 +61,5 @@ class ChangingDigitPhoneNumberContainer extends Component {
     );
   }
 }
+
+export { ChangingDigitPhoneNumber, ChangingDigitPhoneNumberContainer };
